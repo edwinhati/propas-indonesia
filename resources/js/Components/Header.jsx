@@ -70,8 +70,8 @@ export default function Header({ auth }) {
                     <a href="#" className="-m-1.5 p-1.5">
                         <span className="sr-only">Your Company</span>
                         <img
-                            className="h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            className="h-12 w-auto"
+                            src="/logo.jpeg"
                             alt=""
                         />
                     </a>
@@ -87,7 +87,7 @@ export default function Header({ auth }) {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <Popover className="relative">
+                    {/* <Popover className="relative">
                         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
                             Product
                             <ChevronDownIcon
@@ -150,25 +150,25 @@ export default function Header({ auth }) {
                                 </div>
                             </Popover.Panel>
                         </Transition>
-                    </Popover>
+                    </Popover> */}
 
                     <a
                         href="#"
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
-                        Features
+                        Beranda
                     </a>
                     <a
                         href="#"
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
-                        Marketplace
+                        Organisasi
                     </a>
                     <a
                         href="#"
                         className="text-sm font-semibold leading-6 text-gray-900"
                     >
-                        Company
+                        Berita
                     </a>
                 </Popover.Group>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -211,7 +211,7 @@ export default function Header({ auth }) {
                             <span className="sr-only">Your Company</span>
                             <img
                                 className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                src="/logo.jpeg"
                                 alt=""
                             />
                         </a>
@@ -227,7 +227,7 @@ export default function Header({ auth }) {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <Disclosure as="div" className="-mx-3">
+                                {/* <Disclosure as="div" className="-mx-3">
                                     {({ open }) => (
                                         <>
                                             <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -259,24 +259,24 @@ export default function Header({ auth }) {
                                             </Disclosure.Panel>
                                         </>
                                     )}
-                                </Disclosure>
+                                </Disclosure> */}
                                 <a
                                     href="#"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Features
+                                    Beranda
                                 </a>
                                 <a
                                     href="#"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Marketplace
+                                    Organisasi
                                 </a>
                                 <a
                                     href="#"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
-                                    Company
+                                    Berita
                                 </a>
                             </div>
                             <div className="py-6">
