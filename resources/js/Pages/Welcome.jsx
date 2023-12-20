@@ -2,8 +2,9 @@ import { Link, Head } from "@inertiajs/react";
 import Header from "@/Components/Header";
 import Content from "@/Components/Content";
 import Blog from "@/Components/Blog";
+import Footer from "@/Components/Footer";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth }) {
     return (
         <>
             <Header auth={auth} />
@@ -17,7 +18,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             </div>
             <Content />
             <Blog />
-            
+            <Footer />
 
             <style>{`
                 .bg-dots-darker {

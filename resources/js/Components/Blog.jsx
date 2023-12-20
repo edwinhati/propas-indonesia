@@ -16,7 +16,23 @@ const posts = [
                 "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
         },
     },
-    // More posts...
+    {
+        id: 2,
+        title: "How to use search engine optimization to drive sales",
+        href: "#",
+        description:
+            "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
+        date: "Mar 10, 2020",
+        datetime: "2020-03-10",
+        category: { title: "SEO", href: "#" },
+        author: {
+            name: "Brenna Goyette",
+            role: "Product Owner",
+            href: "#",
+            imageUrl:
+                "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        },
+    }
 ];
 
 export default function Blog() {
