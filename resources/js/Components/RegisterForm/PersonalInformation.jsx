@@ -79,6 +79,7 @@ export default function PersonalInformation({ data, setData, errors }) {
                         autoComplete="gender"
                         onChange={(e) => setData("gender", e.target.value)}
                         options={[
+                            { label: "---", value: "" },
                             { label: "Laki-laki", value: "Laki-laki" },
                             { label: "Perempuan", value: "Perempuan" },
                         ]}
@@ -103,6 +104,7 @@ export default function PersonalInformation({ data, setData, errors }) {
                             setData("marital_status", e.target.value)
                         }
                         options={[
+                            { label: "---", value: "" },
                             { label: "Belum Kawin", value: "Belum Kawin" },
                             { label: "Kawin", value: "Kawin" },
                             { label: "Cerai Hidup", value: "Cerai Hidup" },

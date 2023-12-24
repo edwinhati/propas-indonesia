@@ -25,8 +25,17 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'nik' => fake()->unique(),
-            'email' => fake()->unique()->safeEmail(),
+            'nik' => $this->faker->unique()->numberBetween(1000000000, 9999999999), // Adjust the range for a valid number
+            'place_of_birth' => $this->faker->city(),
+            'date_of_birth' => $this->faker->date(),
+            'gender' => $this->faker->randomElement(['male', 'female']), // Use 'male' and 'female' instead of fake()->gender()
+            'marital_status' => $this->faker->randomElement(['single', 'married', 'divorced', 'widowed']),
+            'province' => $this->faker->state(),
+            'city' => $this->faker->city(),
+            'district' => $this->faker->word(), // Replace with appropriate fake data
+            'village' => $this->faker->word(), // Replace with appropriate fake data
+            'address' => $this->faker->address(),
+            'phone_number' => $this->faker->unique()->phoneNumber(), 'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
