@@ -38,7 +38,7 @@ export default function AccountInformation({ data, setData, errors }) {
                 <InputError message={errors.email} className="mt-2" />
             </div>
             <div className="mt-4">
-                <InputLabel htmlFor="password" value="Password" />
+                <InputLabel htmlFor="password" value="Kata Sandi" />
 
                 <TextInput
                     id="password"
@@ -56,7 +56,7 @@ export default function AccountInformation({ data, setData, errors }) {
             <div className="mt-4">
                 <InputLabel
                     htmlFor="password_confirmation"
-                    value="Confirm Password"
+                    value="Konfirmasi Kata Sandi"
                 />
 
                 <TextInput
