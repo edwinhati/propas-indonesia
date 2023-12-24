@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+        <footer className="bg-white rounded-lg shadow">
             <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a
@@ -12,7 +12,7 @@ export default function Footer() {
                             className="h-8"
                             alt="PROPAS Logo"
                         />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap">
                             PROPAS INDONESIA
                         </span>
                     </a>
@@ -57,8 +57,8 @@ export default function Footer() {
                         />
                     </div>
                 </div>
-                <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+                <hr className="my-6 border-gray-200 sm:mx-auto" />
+                <span className="block text-sm text-gray-500 sm:text-center">
                     © 2023{" "}
                     <a href="#" className="hover:underline">
                         PROPAS INDONESIA
