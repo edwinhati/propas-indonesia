@@ -1,0 +1,106 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_pull:
+    name: Run Pull
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Connect to EC2 and pull
+        run: |
+           ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.REMOTE_HOST }} 'sudo chown -R $USER /var/www/laravel && sudo chmod -R 755 /var/www/laravel && sudo chmod -R 777 /var/www/laravel/storage && cd /var/www/laravel && sudo git stash && sudo git pull'
+
+  run_composer:
+    name: Run Composer
+    runs-on: ubuntu-latest
+    needs: run_pull
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Install Composer dependencies
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.REMOTE_HOST }} 'cd /var/www/laravel && sudo composer install --no-interaction --prefer-dist --optimize-autoloader'
+
+  run_migrate:
+    name: Run Migrate
+    runs-on: ubuntu-latest
+    needs: run_composer
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run Migrate
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.REMOTE_HOST }} 'cd /var/www/laravel && sudo php artisan migrate --force'
+
+  run_cache:
+    name: Run Cache
+    runs-on: ubuntu-latest
+    needs: run_migrate
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run Cache
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.REMOTE_HOST }} 'cd /var/www/laravel && sudo php artisan config:cache && sudo php artisan route:cache'
+
+  run_npm:
+    name: Run NPM
+    runs-on: ubuntu-latest
+    needs: run_cache
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run NPM
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.REMOTE_HOST }} 'cd /var/www/laravel && sudo npm install && sudo npm run build'
