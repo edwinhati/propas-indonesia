@@ -6,6 +6,22 @@ export default function AccountInformation({ data, setData, errors }) {
     return (
         <div>
             <div className="mt-4">
+                <InputLabel htmlFor="phone_number" value="Nomor Telepon" />
+
+                <TextInput
+                    id="phone_number"
+                    type="number"
+                    name="phone_number"
+                    value={data.phone_number}
+                    className="mt-1 block w-full"
+                    autoComplete="phone_number"
+                    onChange={(e) => setData("phone_number", e.target.value)}
+                    required
+                />
+
+                <InputError message={errors.name} className="mt-2" />
+            </div>
+            <div className="mt-4">
                 <InputLabel htmlFor="email" value="Email" />
 
                 <TextInput
