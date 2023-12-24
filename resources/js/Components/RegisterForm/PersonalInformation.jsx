@@ -1,7 +1,6 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
-import NumberInput from "@/Components/NumberInput";
 import SelectInput from "@/Components/SelectInput";
 
 export default function PersonalInformation({ data, setData, errors }) {
@@ -9,8 +8,9 @@ export default function PersonalInformation({ data, setData, errors }) {
         <div>
             <div>
                 <InputLabel htmlFor="nik" value="NIK" />
-                <NumberInput
+                <TextInput
                     id="nik"
+                    type="number"
                     name="nik"
                     value={data.nik}
                     className="mt-1 block w-full"
@@ -54,12 +54,12 @@ export default function PersonalInformation({ data, setData, errors }) {
             </div>
             <div className="mt-4">
                 <InputLabel htmlFor="date_of_birth" value="Tanggal Lahir" />
-                <input
-                    type="date"
+                <TextInput
                     id="date_of_birth"
+                    type="date"
                     name="date_of_birth"
                     value={data.date_of_birth}
-                    className="mt-1 block w-full border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className="mt-1 block w-full"
                     autoComplete="date_of_birth"
                     onChange={(e) => setData("date_of_birth", e.target.value)}
                     required
@@ -83,7 +83,7 @@ export default function PersonalInformation({ data, setData, errors }) {
                             { label: "Perempuan", value: "Perempuan" },
                         ]}
                         required
-                        />
+                    />
 
                     <InputError message={errors.gender} className="mt-2" />
                 </div>
@@ -93,12 +93,15 @@ export default function PersonalInformation({ data, setData, errors }) {
                         value="Status Perkawinan"
                     />
 
-                  <SelectInput  id="marital_status"
+                    <SelectInput
+                        id="marital_status"
                         name="marital_status"
                         value={data.marital_status}
                         className="mt-1 block w-full"
                         autoComplete="marital_status"
-                        onChange={(e) => setData("marital_status", e.target.value)}
+                        onChange={(e) =>
+                            setData("marital_status", e.target.value)
+                        }
                         options={[
                             { label: "Belum Kawin", value: "Belum Kawin" },
                             { label: "Kawin", value: "Kawin" },
