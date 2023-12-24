@@ -2,6 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import NumberInput from "@/Components/NumberInput";
+import SelectInput from "@/Components/SelectInput";
 
 export default function PersonalInformation({ data, setData, errors }) {
     return (
@@ -70,10 +71,19 @@ export default function PersonalInformation({ data, setData, errors }) {
                 <div className="w-1/2">
                     <InputLabel htmlFor="gender" value="Jenis Kelamin" />
 
-                    <select className="border w-full border-gray-300 text-gray-900 text-sm rounded-lg">
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                    </select>
+                    <SelectInput
+                        id="gender"
+                        name="gender"
+                        value={data.gender}
+                        className="mt-1 block w-full"
+                        autoComplete="gender"
+                        onChange={(e) => setData("gender", e.target.value)}
+                        options={[
+                            { label: "Laki-laki", value: "Laki-laki" },
+                            { label: "Perempuan", value: "Perempuan" },
+                        ]}
+                        required
+                        />
 
                     <InputError message={errors.gender} className="mt-2" />
                 </div>
@@ -83,11 +93,20 @@ export default function PersonalInformation({ data, setData, errors }) {
                         value="Status Perkawinan"
                     />
 
-                    <select className="border w-full border-gray-300 text-gray-900 text-sm rounded-lg">
-                        <option value="Belum Menikah">Belum Menikah</option>
-                        <option value="Menikah">Menikah</option>
-                        <option value="Menikah">Pernah Menikah</option>
-                    </select>
+                  <SelectInput  id="marital_status"
+                        name="marital_status"
+                        value={data.marital_status}
+                        className="mt-1 block w-full"
+                        autoComplete="marital_status"
+                        onChange={(e) => setData("marital_status", e.target.value)}
+                        options={[
+                            { label: "Belum Kawin", value: "Belum Kawin" },
+                            { label: "Kawin", value: "Kawin" },
+                            { label: "Cerai Hidup", value: "Cerai Hidup" },
+                            { label: "Cerai Mati", value: "Cerai Mati" },
+                        ]}
+                        required
+                    />
 
                     <InputError
                         message={errors.marital_status}
