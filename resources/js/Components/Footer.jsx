@@ -16,28 +16,6 @@ export default function Footer() {
                             PROPAS INDONESIA
                         </span>
                     </a>
-                    {/* <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                        <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">
-                                Privacy Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:underline me-4 md:me-6">
-                                Licensing
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="hover:underline">
-                                Contact
-                            </a>
-                        </li>
-                    </ul> */}
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                         <SocialLink
                             href="https://www.facebook.com/propasindonesia"
