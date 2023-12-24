@@ -20,6 +20,61 @@ const fetchData = async (url, errorMessage, setter) => {
 };
 
 export default function AddressInformation({ data, setData, errors }) {
+    const [provinces, setProvinces] = useState([]);
+    const [cities, setCities] = useState([]);
+    const [districts, setDistricts] = useState([]);
+    const [villages, setVillages] = useState([]);
+
+    useEffect(() => {
+        fetchData(
+            "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json",
+            "provinces",
+            setProvinces
+        );
+    }, []);
+
+    useEffect(() => {
+        if (data.province) {
+            const province = provinces.find(
+                (item) => item.name === data.province
+            );
+            fetchData(
+                `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${province.id}.json`,
+                "regencies",
+                setCities
+            );
+        } else {
+            setCities([]);
+        }
+    }, [data.province, provinces]);
+
+    useEffect(() => {
+        if (data.city) {
+            const city = cities.find((item) => item.name === data.city);
+            fetchData(
+                `https://www.emsifa.com/api-wilayah-indonesia/api/districts/${city.id}.json`,
+                "districts",
+                setDistricts
+            );
+        } else {
+            setDistricts([]);
+        }
+    }, [data.city, cities]);
+
+    useEffect(() => {
+        if (data.district) {
+            const district = districts.find(
+                (item) => item.name === data.district
+            );
+            fetchData(
+                `https://www.emsifa.com/api-wilayah-indonesia/api/villages/${district.id}.json`,
+                "villages",
+                setVillages
+            );
+        }
+    }, [data.district, districts]);
+
+
     return (
         <div>
             <div className="mt-4">
@@ -33,9 +88,10 @@ export default function AddressInformation({ data, setData, errors }) {
                     onChange={(e) => setData("province", e.target.value)}
                     options={[
                         { label: "---", value: "" },
-                        { label: "Jawa Barat", value: "Jawa Barat" },
-                        { label: "Jawa Tengah", value: "Jawa Tengah" },
-                        { label: "Jawa Timur", value: "Jawa Timur" },
+                        ...provinces.map((province) => ({
+                            label: province.name,
+                            value: province.name,
+                        })),
                     ]}
                     required
                 />
@@ -52,9 +108,10 @@ export default function AddressInformation({ data, setData, errors }) {
                     onChange={(e) => setData("city", e.target.value)}
                     options={[
                         { label: "---", value: "" },
-                        { label: "Bandung", value: "Bandung" },
-                        { label: "Bekasi", value: "Bekasi" },
-                        { label: "Bogor", value: "Bogor" },
+                        ...cities.map((city) => ({
+                            label: city.name,
+                            value: city.name,
+                        })),
                     ]}
                     required
                 />
@@ -71,9 +128,10 @@ export default function AddressInformation({ data, setData, errors }) {
                     onChange={(e) => setData("district", e.target.value)}
                     options={[
                         { label: "---", value: "" },
-                        { label: "Cimahi", value: "Cimahi" },
-                        { label: "Cimanggis", value: "Cimanggis" },
-                        { label: "Cinere", value: "Cinere" },
+                        ...districts.map((district) => ({
+                            label: district.name,
+                            value: district.name,
+                        })),
                     ]}
                     required
                 />
@@ -90,9 +148,10 @@ export default function AddressInformation({ data, setData, errors }) {
                     onChange={(e) => setData("village", e.target.value)}
                     options={[
                         { label: "---", value: "" },
-                        { label: "Cibabat", value: "Cibabat" },
-                        { label: "Cibadak", value: "Cibadak" },
-                        { label: "Cibitung", value: "Cibitung" },
+                        ...villages.map((village) => ({
+                            label: village.name,
+                            value: village.name,
+                        })),
                     ]}
                     required
                 />
