@@ -10,7 +10,7 @@ export default function PersonalInformation({ data, setData, errors }) {
                 <InputLabel htmlFor="nik" value="NIK" />
                 <TextInput
                     id="nik"
-                    type="number"
+                    type="text"
                     name="nik"
                     value={data.nik}
                     className="mt-1 block w-full"

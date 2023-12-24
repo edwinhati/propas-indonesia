@@ -10,7 +10,7 @@ export default function AccountInformation({ data, setData, errors }) {
 
                 <TextInput
                     id="phone_number"
-                    type="number"
+                    type="text"
                     name="phone_number"
                     value={data.phone_number}
                     className="mt-1 block w-full"
