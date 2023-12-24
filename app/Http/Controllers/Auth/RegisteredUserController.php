@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
     {
          $request->validate([
             'name' => 'required|string|max:255',
-            'nik' => 'required|string|string|max:16|unique:'.User::class,
+            'nik' => 'required|string|max:16|unique:'.User::class,
             'place_of_birth' => 'required|string|max:255',
             'date_of_birth' => 'required|date|before_or_equal:today',
             'gender' => 'required|string|max:255',
@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
             'district' => 'required|string|max:255',
             'village' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'phone_number' => 'required|string|string|max:15|unique:'.User::class,
+            'phone_number' => 'required|string|max:15|unique:'.User::class,
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
