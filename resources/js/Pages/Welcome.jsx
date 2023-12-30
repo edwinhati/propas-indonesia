@@ -1,10 +1,10 @@
-import { Link, Head } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import Header from "@/Components/Header";
 import Content from "@/Components/Content";
 import Blog from "@/Components/Blog";
 import Footer from "@/Components/Footer";
 
-export default function Welcome({ auth }) {
+export default function Welcome({ auth, news }) {
     return (
         <>
             <Header auth={auth} />
@@ -17,7 +17,7 @@ export default function Welcome({ auth }) {
                 />{" "}
             </div>
             <Content />
-            <Blog />
+            <Blog posts={news} />
             <Footer />
 
             <style>{`
