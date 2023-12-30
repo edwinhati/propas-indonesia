@@ -1,6 +1,7 @@
 import { Head } from "@inertiajs/react";
 import Header from "@/Components/Header";
 import Content from "@/Components/Content";
+import Gallery from "@/Components/Gallery";
 import Blog from "@/Components/Blog";
 import Footer from "@/Components/Footer";
 
@@ -17,6 +18,25 @@ export default function Welcome({ auth, news }) {
                 />{" "}
             </div>
             <Content />
+            <div className="p-4 mx-auto">
+                <video className="w-full" controls>
+                    <source
+                        src="https://propasindonesia.s3.ap-southeast-1.amazonaws.com/video.mp4"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <Gallery
+                images={[
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/1.jpeg",
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/2.jpeg",
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/3.jpeg",
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/4.jpeg",
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/5.jpeg",
+                    "https://propasindonesia.s3.ap-southeast-1.amazonaws.com/sertifikasi/6.jpeg",
+                ]}
+            />
             <Blog posts={news} />
             <Footer />
 
