@@ -18,7 +18,7 @@ export default function Blog({ posts }) {
                         >
                             <div className="flex items-center gap-x-4 text-xs">
                                 <time
-                                    dateTime={post.datetime}
+                                    dateTime={post.created_at}
                                     className="text-gray-500"
                                 >
                                     {post.date}
