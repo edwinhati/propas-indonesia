@@ -21,7 +21,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'news' =>  News::latest()->get(),
+        'news' =>  News::orderBy('created_at', 'desc')->get(),
     ]);
 });
 
