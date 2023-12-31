@@ -21,9 +21,9 @@ export default function Dashboard({ auth }) {
                         <div className="p-6 text-gray-900">
                             Kartu Anggota
                         </div>
-                        <MemberCard user={auth.user} />
-                        <br />
-                        <br />
+                        <div className="scale-50 sm:scale-100 mb-6">
+                            <MemberCard user={auth.user} />
+                        </div>
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className='p-4 mx-auto container'>
